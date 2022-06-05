@@ -175,7 +175,7 @@ function processmessage(msg){
     }
     else if(state=="bemvindo"){
         if(saudacoes.includes(msg)){
-            return "Olá, seja bem vindo!"
+            return "Olá, seja bem vindo!<br>Em caso de dúvida digite \"ajuda\"."
         }
         else if(checkstr(msg, pedido)){
             state="sabor";
@@ -339,4 +339,4 @@ btnSend.addEventListener("click", (e) => {
         chat.value = "";
     }
 });
-saymessage("<b>Olá, seja bem vindo à Pizzaria Bons do Pedaço!</b> 🍕<br>Fique à vontade para solicitar o cardápio ou solicitar um pedido.<br>Em caso de dúvida digite \"ajuda\".");
+saymessage("<b>Olá, seja bem vindo à Pizzaria Bons do Pedaço!</b> 🍕<br>Fique à vontade para solicitar o cardápio ou solicitar um pedido.");
