@@ -108,7 +108,7 @@ function checkcardapio(string){
 }catch{
     saymessage("Não foi possível acessar o cardápio.");
 }
-    return -1;
+    return string-1;
 }
 function getPizzaName(id){
     try{
@@ -158,8 +158,12 @@ function listaConta(){
         lista = lista + conta[i].id + ' - ' +  conta[i].name + ' - R$' + conta[i].price.toFixed(2) + '<br>';
         custototal+=conta[i].price;
     }
+    if (lista!=''){
+        lista+='<br><b>Custo total:</b> R$' + custototal.toFixed(2);
+    }else{
+        lista=null;
+    }
     
-    lista+='<br><b>Custo total:</b> R$' + custototal.toFixed(2);
     return lista
 }
 
@@ -167,15 +171,21 @@ function listaConta(){
 
 
 function processmessage(msg){
-    const saudacoes = ['oi', 'oie', 'ola', 'olá', 'bom dia', 'boa tarde', 'boa noite'];
     const pedido = ['fazer um pedido', 'pedir'];
     const cardapio = ['cardapio', 'cardápio'];
-    if(checkstr(msg, cardapio)){
+    if(msg=="pedido"){
+        if (listaConta()!=null){
+            return '<b>Sua conta no momento:</b> <br>'+listaConta()
+        }else{
+            return 'Você ainda não realizou nenhum pedido.'
+        }
+    }
+    else if(msg=="ajuda"){
+        return 'Cardápio: Solicita o cardápio.<br>Pedir: Para realizar seu pedido.<br>Pedido: Para ver a conta até o momento.'
+    }
+    else if(checkstr(msg, cardapio)){
         return 'Aqui está nosso cardápio!<br>Clique na imagem abaixo para acessá-lo. <br><br>[cardapiodiv]'
     }
-    else if(checkstr(msg, saudacoes)){
-            return "Olá, seja bem vindo!Em caso de dúvida digite \"ajuda\"."
-        }
     else if(checkstr(msg, pedido)){
             state="sabor";
             return 'Agradecemos a preferência!😃 <br> Qual sabor gostaria? Você pode solicitar o cardápio a qualquer momento da conversa.'
@@ -232,7 +242,7 @@ function processmessage(msg){
     else if(state=="confirmacon"){
         if(msg=='sim'){
             state="perguntacep";
-            return 'Conta fechada! 😃 Vamos preparar a entrega agora. Por favor digite seu CEP(sem adicionar traços).'
+            return 'Conta fechada! 😃 Vamos preparar a entrega agora. Por favor digite seu CEP(somente dígitos).'
         }else if(msg=='nao'){
             state="sabor";
             return 'Vamos continuar então. Qual sabor deseja agora?'
@@ -291,7 +301,6 @@ function processmessage(msg){
     }
     else if(state=="confirmfinal"){
         if(msg=='sim'){
-            state="bemvindo";
             return '<b>Conta fechada!</b> <br><br>Faremos as pizzas e enviaremos um motoboy assim que possível! A estimativa de tempo é 40 minutos. <br><br> <b>A Pizzaria Bons do Pedaço agradece sua preferência!</b>'
         }else if(msg=='nao'){
             state="corrigir";
@@ -337,3 +346,5 @@ btnSend.addEventListener("click", (e) => {
         chat.value = "";
     }
 });
+saymessage("<b>Olá, seja bem vindo à Pizzaria Bons do Pedaço!</b> 🍕<br>Fique à vontade para solicitar o cardápio ou solicitar um pedido.");
+saymessage("Em caso de dúvida digite \"ajuda\".");
