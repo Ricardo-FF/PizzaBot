@@ -173,18 +173,16 @@ function processmessage(msg){
     if(checkstr(msg, cardapio)){
         return 'Aqui está nosso cardápio!<br>Clique na imagem abaixo para acessá-lo. <br><br>[cardapiodiv]'
     }
-    else if(state=="bemvindo"){
-        if(saudacoes.includes(msg)){
+    else if(checkstr(msg, saudacoes)){
             return "Olá, seja bem vindo!Em caso de dúvida digite \"ajuda\"."
         }
-        else if(checkstr(msg, pedido)){
+    else if(checkstr(msg, pedido)){
             state="sabor";
             return 'Agradecemos a preferência!😃 <br> Qual sabor gostaria? Você pode solicitar o cardápio a qualquer momento da conversa.'
         }
-    }
     else if(state=="sabor"){
         
-        var pizzaid = checkcardapio(msg)
+        var pizzaid = checkcardapio(msg);
         sabortemp = getPizzaName(pizzaid);
         precotemp = getPizzaPrice(pizzaid);
         if(pizzaid>=0){
