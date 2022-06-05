@@ -175,7 +175,7 @@ function processmessage(msg){
     }
     else if(state=="bemvindo"){
         if(saudacoes.includes(msg)){
-            return "Olá, seja bem vindo!<br>Em caso de dúvida digite \"ajuda\"."
+            return "Olá, seja bem vindo!Em caso de dúvida digite \"ajuda\"."
         }
         else if(checkstr(msg, pedido)){
             state="sabor";
