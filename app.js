@@ -339,4 +339,5 @@ btnSend.addEventListener("click", (e) => {
         chat.value = "";
     }
 });
-saymessage("Fique à vontade para solicitar o cardápio ou solicitar um pedido.<br>Em caso de dúvida digite <b>\"ajuda\".</b>");
+saymessage("<b>Olá, seja bem vindo à Pizzaria Bons do Pedaço!</b> 🍕<br>Fique à vontade para solicitar o cardápio ou solicitar um pedido.");
+saymessage("Em caso de dúvida digite \"ajuda\".");
