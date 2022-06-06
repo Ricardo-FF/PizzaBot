@@ -353,4 +353,3 @@ btnSend.addEventListener("click", (e) => {
     }
 });
 saymessage("<b>Olá, seja bem vindo à Pizzaria Bons do Pedaço!</b> 🍕<br>Fique à vontade para solicitar o cardápio ou solicitar um pedido.");
-saymessage("Em caso de dúvida digite \"ajuda\".");
