@@ -161,7 +161,7 @@ function listaConta(){
     if (lista!=''){
         lista+='<br><b>Custo total:</b> R$' + custototal.toFixed(2);
     }else{
-        lista=null;
+        lista='';
     }
     
     return lista
@@ -174,14 +174,19 @@ function processmessage(msg){
     const pedido = ['fazer um pedido', 'pedir'];
     const cardapio = ['cardapio', 'cardápio'];
     if(msg=="pedido"){
-        if (listaConta()!=null){
+        if (listaConta()!=''){
             return '<b>Sua conta no momento:</b> <br>'+listaConta()
         }else{
             return 'Você ainda não realizou nenhum pedido.'
         }
     }
     else if(msg=="ajuda"){
-        return 'Cardápio: Solicita o cardápio.<br>Pedir: Para realizar seu pedido.<br>Pedido: Para ver a conta até o momento.'
+        return 'Cardápio: Solicita o cardápio.<br>Pedir: Para realizar seu pedido.<br>Pedido: Para ver a conta até o momento.<br>Limpar: Limpa a conta e recomeça o pedido.'
+    }    
+    else if(msg=="limpar"){
+        conta= [];
+        state="sabor";
+        return 'Pedido limpo!<br> Qual sabor gostaria? Você pode solicitar o cardápio a qualquer momento da conversa.'
     }
     else if(checkstr(msg, cardapio)){
         return 'Aqui está nosso cardápio!<br>Clique na imagem abaixo para acessá-lo. <br><br>[cardapiodiv]'
@@ -294,13 +299,14 @@ function processmessage(msg){
             pagtemp=pagamento[indextam];
             state="confirmfinal"
             
-            return `<b>Conta final</b> <br><br> <b>Pizzas pedidas:</b> <br>`+ listaConta()+` <br><b>Endereço de entrega:</b>${endtemp} <br> <b>Forma de Pagamento:</b>${pagtemp} <br><br>Podemos fechar?`
+            return `<b>Conta final</b> <br><br> <b>Pizzas pedidas:</b> <br>`+ listaConta()+` <br><b>Endereço de entrega:</b> ${endtemp} <br> <b>Forma de Pagamento:</b> ${pagtemp} <br><br>Podemos fechar?`
         }else{
             return 'Forma de pagamento inválida. Aceitamos somente pagamento em débito, crédito, dinheiro e cheque.'
         }
     }
     else if(state=="confirmfinal"){
         if(msg=='sim'){
+            conta = [];
             return '<b>Conta fechada!</b> <br><br>Faremos as pizzas e enviaremos um motoboy assim que possível! A estimativa de tempo é 40 minutos. <br><br> <b>A Pizzaria Bons do Pedaço agradece sua preferência!</b>'
         }else if(msg=='nao'){
             state="corrigir";
