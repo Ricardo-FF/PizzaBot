@@ -180,6 +180,14 @@ function processmessage(msg){
             return 'Você ainda não realizou nenhum pedido.'
         }
     }
+    else if(msg=="fechar"){
+        if (listaConta()!=''){
+            state="confirmacon";
+            return 'Deseja fechar a conta? Pizzas pedidas até o momento: <br> ' + listaConta()
+        }else{
+            return 'Você ainda não realizou nenhum pedido.'
+        }
+    }
     else if(msg=="ajuda"){
         return 'Cardápio: Solicita o cardápio.<br>Pedir: Para realizar seu pedido.<br>Pedido: Para ver a conta até o momento.<br>Limpar: Limpa a conta e recomeça o pedido.'
     }    
