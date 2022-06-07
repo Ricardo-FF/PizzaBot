@@ -62,7 +62,7 @@ function saymessage(msg){
 function lerCardapio(cb){
     
     var request = new XMLHttpRequest();
-    request.open('GET', './cardapio.js', true);
+    request.open('GET', './Cardapio.js', true);
     request.send(null);
     request.onreadystatechange = function () {
         if (request.readyState === 4 && request.status === 200) {
@@ -353,3 +353,4 @@ btnSend.addEventListener("click", (e) => {
     }
 });
 saymessage("<b>Olá, seja bem vindo à Pizzaria Bons do Pedaço!</b> 🍕<br>Fique à vontade para solicitar o cardápio ou solicitar um pedido.");
+saymessage("Em caso de dúvida digite \"ajuda\".");
