@@ -230,7 +230,7 @@ function processmessage(msg){
             state="confirmaped";
             conta.push({id:conta.length+1, name: sabortemp, price: precotemp});
             return 'Pedido Confirmado! 😃 <br><br><b>Sua conta no momento:</b> <br>' + listaConta()+'<br>Deseja adicionar mais pizzas ao seu pedido?'
-        }else if(msg=='nao'){
+        }else if(msg=='nao'|msg=='não'){
             state="sabor";
             return 'Certo, vamos tentar novamente. Qual sabor deseja?'
         }
@@ -239,7 +239,7 @@ function processmessage(msg){
         if(msg=='sim'){
             state="sabor";
             return 'Certo, qual sabor gostaria agora?'
-        }else if(msg=='nao'){
+        }else if(msg=='nao'|msg=='não'){
             state="confirmacon";
             return 'Deseja fechar a conta? Pizzas pedidas até o momento: <br> ' + listaConta()
         }
@@ -248,7 +248,7 @@ function processmessage(msg){
         if(msg=='sim'){
             state="perguntacep";
             return 'Conta fechada! 😃 Vamos preparar a entrega agora. Por favor digite seu CEP(somente dígitos).'
-        }else if(msg=='nao'){
+        }else if(msg=='nao'|msg=='não'){
             state="sabor";
             return 'Vamos continuar então. Qual sabor deseja agora?'
             
@@ -285,7 +285,7 @@ function processmessage(msg){
         if(msg=='sim'){
             state="formapag";
             return 'Antes de enviarmos, qual forma de pagamento deseja? No momento aceitamos pagamento em débito, crédito, dinheiro e cheque.'
-        }else if(msg=='nao'){
+        }else if(msg=='nao'|msg=='não'){
             state="perguntacep";
             return 'Sem problemas! Vamos tentar novamente. Qual seu CEP?'
             
@@ -308,7 +308,7 @@ function processmessage(msg){
         if(msg=='sim'){
             conta = [];
             return '<b>Conta fechada!</b> <br><br>Faremos as pizzas e enviaremos um motoboy assim que possível! A estimativa de tempo é 40 minutos. <br><br> <b>A Pizzaria Bons do Pedaço agradece sua preferência!</b>'
-        }else if(msg=='nao'){
+        }else if(msg=='nao'|msg=='não'){
             state="corrigir";
             return 'Então, o que deseja fazer? Pedir mais uma pizza, corrigir endereço ou alterar a forma de pagamento?'
             
