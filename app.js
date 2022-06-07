@@ -189,7 +189,7 @@ function processmessage(msg){
         }
     }
     else if(msg=="ajuda"){
-        return 'Cardápio: Solicita o cardápio.<br>Pedir: Para realizar seu pedido.<br>Pedido: Para ver a conta até o momento.<br>Limpar: Limpa a conta e recomeça o pedido.'
+        return 'Cardápio: Solicita o cardápio.<br>Pedir: Para realizar seu pedido.<br>Pedido: Para ver a conta até o momento.<br>Limpar: Limpa a conta e recomeça o pedido.<br>Fechar: Fecha a conta.'
     }    
     else if(msg=="limpar"){
         conta= [];
